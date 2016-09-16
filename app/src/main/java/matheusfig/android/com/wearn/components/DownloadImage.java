@@ -14,12 +14,12 @@ import java.net.URL;
  *
  * Created by matheusfig on 15/09/16.
  */
-public class RemoteImage extends AsyncTask<String, Void, Bitmap> {
+public class DownloadImage extends AsyncTask<String, Void, Bitmap> {
 
     // Attribute
     private ImageView imageView;
 
-    public RemoteImage(ImageView imageView) {
+    public DownloadImage(ImageView imageView) {
         this.imageView = imageView;
     }
 

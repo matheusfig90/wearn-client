@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import matheusfig.android.com.wearn.classes.Item;
+
 /**
  * Adapter to grid view.
  *
@@ -17,9 +19,9 @@ public class GridViewAdapter extends BaseAdapter {
 
     // Attributes
     private Context context;
-    private int[] items;
+    private ArrayList<Item> items;
 
-    public GridViewAdapter(Context context, int[] items) {
+    public GridViewAdapter(Context context, ArrayList<Item> items) {
         this.context = context;
         this.items = items;
     }
@@ -31,18 +33,18 @@ public class GridViewAdapter extends BaseAdapter {
      */
     @Override
     public int getCount() {
-        return this.items.length;
+        return this.items.size();
     }
 
     /**
      * Get data item by index
      *
      * @param i
-     * @return String
+     * @return Item
      */
     @Override
-    public Integer getItem(int i) {
-        return this.items[i];
+    public Item getItem(int i) {
+        return this.items.get(i);
     }
 
     @Override
@@ -53,8 +55,10 @@ public class GridViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView imageView = new ImageView(context);
-        imageView.setImageResource(this.items[i]);
         imageView.setAdjustViewBounds(true);
+
+        DownloadImage downloadImage = new DownloadImage(imageView);
+        downloadImage.execute(this.items.get(i).getImageUrl());
 
         return imageView;
     }
