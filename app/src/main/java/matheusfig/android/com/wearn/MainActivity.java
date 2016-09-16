@@ -158,6 +158,12 @@ public class MainActivity extends AppCompatActivity {
                 if(fileOutputStream != null) {
                     try {
                         fileOutputStream.close();
+
+                        // Call another activity to show results
+                        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                        startActivity(intent);
+
+                        finish();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -255,9 +261,16 @@ public class MainActivity extends AppCompatActivity {
 
         mImageButton = (ImageButton) findViewById(R.id.takePhoto);
         mImageButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-            lockFocus();
+                lockFocus();
+
+//                // Call another activity to show results
+//                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+//                startActivity(intent);
+//
+//                finish();
             }
         });
     }
