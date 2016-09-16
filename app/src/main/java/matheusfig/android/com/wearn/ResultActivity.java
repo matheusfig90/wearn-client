@@ -1,9 +1,12 @@
 package matheusfig.android.com.wearn;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -11,6 +14,9 @@ import matheusfig.android.com.wearn.classes.Item;
 import matheusfig.android.com.wearn.components.GridViewAdapter;
 
 public class ResultActivity extends AppCompatActivity {
+
+    // Attributes
+    GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,17 @@ public class ResultActivity extends AppCompatActivity {
         items.add(new Item("http://www.netshoes.com.br/produto/camiseta-burn-ii-E07-0126-188?&lkey=a21", "http://static5.netshoes.net/Produtos/camiseta-burn-ii/88/E07-0126-188/E07-0126-188_zoom1.jpg"));
         items.add(new Item("http://www.netshoes.com.br/produto/camiseta-gonew-fun-basic-C62-1286-012?&lkey=a21", "http://static5.netshoes.net/Produtos/camiseta-gonew-fun-basic/12/C62-1286-012/C62-1286-012_zoom1.jpg"));
 
-        GridView gridView = (GridView) findViewById(R.id.gridView);
-        gridView.setAdapter(new GridViewAdapter(this, items));
+        this.gridView = (GridView) findViewById(R.id.gridView);
+        this.gridView.setAdapter(new GridViewAdapter(this, items));
+
+        this.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item selectedItem = (Item) gridView.getItemAtPosition(i);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(selectedItem.getUrl()));
+                startActivity(intent);
+            }
+        });
     }
 }
