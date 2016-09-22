@@ -1,10 +1,12 @@
 package matheusfig.android.com.wearn.classes;
 
 /**
- * Created by matheusfig on 15/09/16.
+ * Wear class
+ *
+ * Created by matheusfig on 20/09/16.
  */
-public class Item {
-
+public class Wear
+{
     // Attributes
     private String url;
     private String imageUrl;
@@ -15,7 +17,7 @@ public class Item {
      * @param url
      * @param imageUrl
      */
-    public Item(String url, String imageUrl) {
+    public Wear(String url, String imageUrl) {
         this.url = url;
         this.imageUrl = imageUrl;
     }

@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     private Size mPreviewSize;
     private Size mImageSize;
 
-    private String mImageFileName;
+    public static String mImageFileName;
     private ImageReader mImageReader;
     private final ImageReader.OnImageAvailableListener mOnImageAvailableListener = new
             ImageReader.OnImageAvailableListener() {
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
             FileOutputStream fileOutputStream = null;
             try {
-                fileOutputStream = new FileOutputStream(mImageFileName);
+                fileOutputStream = new FileOutputStream(MainActivity.mImageFileName);
                 fileOutputStream.write(bytes);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 mImage.close();
 
                 Intent mediaStoreUpdateIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                mediaStoreUpdateIntent.setData(Uri.fromFile(new File(mImageFileName)));
+                mediaStoreUpdateIntent.setData(Uri.fromFile(new File(MainActivity.mImageFileName)));
                 sendBroadcast(mediaStoreUpdateIntent);
 
                 if(fileOutputStream != null) {
@@ -542,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String prepend = "IMAGE_" + timestamp + "_";
         File imageFile = File.createTempFile(prepend, ".jpg", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES));
-        mImageFileName = imageFile.getAbsolutePath();
+        MainActivity.mImageFileName = imageFile.getAbsolutePath();
         return imageFile;
     }
 }

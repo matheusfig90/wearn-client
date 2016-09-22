@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-import matheusfig.android.com.wearn.classes.Item;
+import matheusfig.android.com.wearn.classes.Wear;
 
 /**
  * Adapter to grid view.
@@ -19,9 +19,9 @@ public class GridViewAdapter extends BaseAdapter {
 
     // Attributes
     private Context context;
-    private ArrayList<Item> items;
+    private ArrayList<Wear> items;
 
-    public GridViewAdapter(Context context, ArrayList<Item> items) {
+    public GridViewAdapter(Context context, ArrayList<Wear> items) {
         this.context = context;
         this.items = items;
     }
@@ -43,7 +43,7 @@ public class GridViewAdapter extends BaseAdapter {
      * @return Item
      */
     @Override
-    public Item getItem(int i) {
+    public Wear getItem(int i) {
         return this.items.get(i);
     }
 
