@@ -12,13 +12,23 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@mipmap/overlay"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop" />
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:id="@+id/takePhoto"
         android:src="@mipmap/btn_camera"
         android:layout_centerHorizontal="true"
+        android:scaleX="2"
+        android:scaleY="2"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="30dp" />
 
 </RelativeLayout>
