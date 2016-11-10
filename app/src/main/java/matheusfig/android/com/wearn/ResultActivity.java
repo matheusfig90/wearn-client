@@ -42,7 +42,7 @@ public class ResultActivity extends AppCompatActivity {
     private static GridView gridView;
 
     // WebService URL
-    private static String WEBSERVICE_URL = "http://192.168.0.17:5000/api/v1/search";
+    private static String WEBSERVICE_URL = "http://ec2-54-158-79-107.compute-1.amazonaws.com:5000/api/v1/search";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,10 +97,14 @@ public class ResultActivity extends AppCompatActivity {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                Bitmap bitmap = BitmapFactory.decodeFile(MainActivity.mImageFileName);
+
+                // Resize image
+                Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
+
                 // Converting Bitmap to String
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                Bitmap bitmap = BitmapFactory.decodeFile(MainActivity.mImageFileName);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
 
                 String encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
 
